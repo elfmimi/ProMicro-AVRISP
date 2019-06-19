@@ -45,6 +45,9 @@
 
 #include "SPI.h"
 #include "pins_arduino.h"
+#ifdef __AVR__
+#include <avr/wdt.h>
+#endif
 #define RESET     SS
 
 #define LED_HB    9
@@ -67,6 +70,11 @@
 void pulse(int pin, int times);
 
 void setup() {
+#ifdef __AVR__
+  // disable watchdog timer in case we are launched through bootloader
+  MCUSR = 0;
+  wdt_disable();
+#endif
   Serial.begin(9600);
   SPI.setDataMode(0);
   SPI.setBitOrder(MSBFIRST);
