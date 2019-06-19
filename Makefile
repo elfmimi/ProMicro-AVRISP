@@ -10,7 +10,7 @@ TEENSY=../../GitHub/teensy-core/teensy
 # You just need two files, SPI.cpp and SPI.h from ArduinoCore for AVR.
 # https://github.com/arduino/ArduinoCore-avr
 # https://github.com/arduino/ArduinoCore-avr/tree/master/libraries/SPI/src
-LIBSPI=../../GitHub/ArduinoCore-avr/libraries/SPI/src
+LIBSPI=./libraries/SPI
 
 INO_PATH=$(TARGET)
 SRC_PATH=$(TEENSY) $(LIBSPI)
