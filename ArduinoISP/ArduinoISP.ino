@@ -74,6 +74,9 @@ void setup() {
   // disable watchdog timer in case we are launched through bootloader
   MCUSR = 0;
   wdt_disable();
+  // disable jtag and yield up F4 - F7 for GPIO
+  MCUCR |= _BV(JTD);
+  MCUCR |= _BV(JTD);
 #endif
   Serial.begin(9600);
   SPI.setDataMode(0);
