@@ -85,6 +85,7 @@ void setup() {
   SPI.setClockDivider(SPI_CLOCK_DIV128);
   pinMode(LED_PMODE, OUTPUT);
   pulse(LED_PMODE, 2);
+  digitalWrite(LED_PMODE, HIGH);
   pinMode(LED_ERR, OUTPUT);
   pulse(LED_ERR, 2);
   pinMode(LED_HB, OUTPUT);
@@ -132,8 +133,8 @@ void heartbeat() {
 
 void loop(void) {
   // is pmode active?
-  if (pmode) digitalWrite(LED_PMODE, HIGH); 
-  else digitalWrite(LED_PMODE, LOW);
+  if (pmode) digitalWrite(LED_PMODE, LOW);
+  else digitalWrite(LED_PMODE, HIGH);
   // is there an error?
   if (error) digitalWrite(LED_ERR, HIGH); 
   else digitalWrite(LED_ERR, LOW);
@@ -168,7 +169,7 @@ void pulse(int pin, int times) {
 
 void prog_lamp(int state) {
   if (PROG_FLICKER)
-    digitalWrite(LED_PMODE, state);
+    digitalWrite(LED_PMODE, state == LOW ? HIGH : LOW);
 }
 
 uint8_t spi_transaction(uint8_t a, uint8_t b, uint8_t c, uint8_t d) {
