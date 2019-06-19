@@ -5,7 +5,7 @@ F_CPU=16000000
 
 # We are gonna build against TeensyCore, because of VID&PID.
 # https://github.com/PaulStoffregen/cores
-TEENSY=../../GitHub/teensy-core/teensy
+TEENSY=./TeensyCore/teensy
 
 # You just need two files, SPI.cpp and SPI.h from ArduinoCore for AVR.
 # https://github.com/arduino/ArduinoCore-avr
@@ -26,6 +26,10 @@ default: hex
 bin: $(TARGET).bin
 hex: $(TARGET).hex
 elf: $(TARGET).elf
+
+submodule:
+	git submodule sync TeensyCore
+	git submodule update --init --progress TeensyCore
 
 $(OBJDIR):
 	@mkdir -p $@
