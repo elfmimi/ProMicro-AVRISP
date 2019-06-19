@@ -48,11 +48,11 @@
 #ifdef __AVR__
 #include <avr/wdt.h>
 #endif
-#define RESET     SS
+#define RESET     PIN_F4
 
-#define LED_HB    9
-#define LED_ERR   8
-#define LED_PMODE 7
+#define LED_HB    PIN_D5
+#define LED_ERR   PIN_D3
+#define LED_PMODE PIN_B0
 #define PROG_FLICKER true
 
 #define HWVER 2
