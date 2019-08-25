@@ -25,3 +25,7 @@ Please report issues on github.
 * Default bootloader of ATMEGA32U4 can be found [here](http://ww1.microchip.com/downloads/en/DeviceDoc/megaUSB_DFU_Bootloaders.zip).
 
   and it's document [here](http://ww1.microchip.com/downloads/en/DeviceDoc/doc7618.pdf).
+
+## Changelog
+* v1.1
+  * Fixed: Now it is properly recognized as a USB device when lauched from Caterina bootloader just after rewriting.
