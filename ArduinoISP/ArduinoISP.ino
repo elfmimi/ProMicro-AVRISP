@@ -78,6 +78,17 @@ void setup() {
   MCUCR |= _BV(JTD);
   MCUCR |= _BV(JTD);
 #endif
+
+#if defined(__AVR_ATmega32U4__)
+  // USB Re-attach
+  // Caterina Bootloader need this. (atleast with TeensyCore)
+  // DFU Bootloader don't need this.
+  if (UDCON & (1 << DETACH)) {
+    delay(1200); // more delay to allow QMK-Tool box to detect disconnect first
+      UDCON = 0;
+  }
+#endif
+
   Serial.begin(9600);
   SPI.setDataMode(0);
   SPI.setBitOrder(MSBFIRST);
